@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Baixar Videos</title>
+</head>
+<body>
+    <div id="container">
+
+        <form id="form-search" method="post">
+            {% csrf_token %}
+            {{form.link}}
+            <button id="btn-search" type='submit'> Pesquisar</button>
+        </form>
+
+        <h2>{{title}}</h2>
+        <div id="info-video">
+            <div id="thumbnail-container">
+                <img id="thumbnail" src="{{thumbnail_link}}" alt="">
+            </div>
+
+            <div>
+                <table id="table-download">
+                    <thead>
+                        <tr>
+                            <th>Resolução</th>
+                            <th>Tamanho</th>
+                            <th>Donwload</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for resolution in  resolutions %}    
+                        <tr>
+                            <td>{{resolution}}</td>
+                            <td>50Mb</td>
+                            <td><a href="">Baixar</a></td>
+                        </tr>            
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
